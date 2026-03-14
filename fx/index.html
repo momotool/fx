@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超初心者のためのFX環境構築ナビ｜MomoTool（momotool.net）</title>
+  <meta name="description" content="「上か下か」のシンプルな世界を、正しく歩くための手順書。根性ではなく、インフラで勝つ。超初心者専用のFX環境構築ガイド。">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="../" class="logo">MomoTool<span class="logo-dot">.</span>net</a>
+      <nav class="nav">
+        <a href="#intro">FXってなに？</a>
+        <a href="#mechanism">儲ける仕組み</a>
+        <a href="#rules">3大ルール</a>
+        <a href="#orders">注文と決済</a>
+        <a href="#chart">チャート</a>
+        <a href="#news">経済指標</a>
+        <a href="#compound">複利の魔法</a>
+        <a href="#faq">ウソ・ホント</a>
+        <a href="#environment">環境が大事</a>
+        <a href="#cta">デモから</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ヒーロー -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-label">超初心者のためのFX環境構築ナビ</p>
+        <h1 class="hero-title">
+          「上か下か」のシンプルな世界を、<br>
+          正しく歩くための手順書。
+        </h1>
+        <p class="hero-sub">
+          根性ではなく、インフラで勝つ。超初心者専用のFX環境構築ガイド。
+        </p>
+        <a href="#intro" class="btn btn-primary">まずは基本から読む</a>
+      </div>
+      <div class="hero-accent"></div>
+    </section>
+
+    <!-- 1. はじめに：FXってなに？ -->
+    <section class="section" id="intro">
+      <div class="container">
+        <h2 class="section-title">お金の両替で、お小遣いを稼ぐ。</h2>
+        <p class="section-lead">株との違い（24時間営業）、会社員や夜型の人に最適という話。</p>
+        <div class="content-block prose">
+          <p>FX（外国為替証拠金取引）をひと言で言うと、<strong>「通貨の価値が変わるのを利用した両替」</strong>です。</p>
+          <h3>株との違い</h3>
+          <p>株は「特定の会社」を応援しますが、FXは「日本」や「アメリカ」という「国」を相手にします。会社が倒産して紙切れになるリスクより、国のお金がゼロになるリスクの方が圧倒的に低いため、初心者でも入りやすいのが特徴です。</p>
+          <h3>24時間営業</h3>
+          <p>株は平日の昼間（9:00〜15:00）しかできませんが、FXは月曜朝から土曜朝まで、世界中のどこかの市場が常に開いています。</p>
+          <p class="lead"><strong>つまり：</strong>仕事が終わって帰宅した後、ビールを飲みながら「寝る前の30分」で完結できるのが、現代人にとって最大のメリットです。</p>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">口座開設はこちら（無料）</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 仕組み：どうやって儲けるの？ -->
+    <section class="section section-alt" id="mechanism">
+      <div class="container">
+        <h2 class="section-title">上がっても、下がっても、利益になる。</h2>
+        <p class="section-lead">リンゴの例え。買い（ロング）と、持ってないものを売る「売り（ショート）」の解説。</p>
+        <div class="content-block prose">
+          <p>FXで利益が出る仕組みは、実はコンビニの商売と同じくらいシンプルです。</p>
+          <h3>買い（ロング）</h3>
+          <p>1ドル140円の時に買って、150円になったら売る。差額の10円が利益です。これはイメージしやすいですよね。</p>
+          <h3>売り（ショート）</h3>
+          <p>FXの凄いところは、<strong>「持っていないドルを、先に売る」</strong>ことができる点です。150円で「売る約束」をして、140円に値下がりした時に安く仕入れて渡す。これでも差額の10円が利益になります。</p>
+          <p class="lead"><strong>つまり：</strong>景気が良くても悪くても、円安でも円高でも、「どっちかに動けばチャンス」。これがFXの全天候型の強みです。</p>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-secondary">デモで体験する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ルール：FXの「3大ルール」 -->
+    <section class="section" id="rules">
+      <div class="container">
+        <h2 class="section-title">これだけ知っていれば、プロと話せる。</h2>
+        <p class="section-lead">レバレッジ（25倍）、スワップ（金利）、ロスカット（安全装置）。</p>
+        <div class="num-card-grid">
+          <article class="num-card">
+            <span class="num-card-num">01</span>
+            <h3>レバレッジ（テコの原理）</h3>
+            <p>手元に1万円しかなくても、FX会社に預ければ最大25万円分（25倍）の取引ができます。少ない資金で効率よく増やせる「ブースト機能」です。</p>
+          </article>
+          <article class="num-card">
+            <span class="num-card-num">02</span>
+            <h3>スワップ（金利）</h3>
+            <p>低金利の日本円を売って、高金利の外貨（ドルやメキシコペソなど）を持っているだけで、毎日「金利の差額」がチャリンとお小遣いのように入ってきます。</p>
+          </article>
+          <article class="num-card">
+            <span class="num-card-num">03</span>
+            <h3>ロスカット（安全装置）</h3>
+            <p>予想が外れて損が膨らんだ時、会社が自動的に取引を止めてくれます。大火事になる前にスプリンクラーが回るようなもので、あなたの資産を守る最後の砦です。</p>
+          </article>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">安全に始める（口座開設）</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 操作：注文と決済の方法 -->
+    <section class="section section-alt" id="orders">
+      <div class="container">
+        <h2 class="section-title">「今すぐ」か「予約」か、選ぶだけ。</h2>
+        <p class="section-lead">成行・指値・逆指値。そして終わらせ方（利確・損切り）の自動予約について。</p>
+        <div class="content-block prose">
+          <h3>注文の種類</h3>
+          <ul>
+            <li><strong>成行（なりゆき）：</strong>今の価格で「今すぐ」買う・売る。シンプルで迷わない。</li>
+            <li><strong>指値：</strong>「〇〇円になったら買う」とあらかじめ予約。希望価格で確実に約定したい時に。</li>
+            <li><strong>逆指値：</strong>「〇〇円を割ったら売る」など、価格が動いたタイミングで自動発動。利確や損切りを「予約」しておける。</li>
+          </ul>
+          <h3>終わらせ方（利確・損切り）</h3>
+          <p>利益が出たところで決済するのが「利確」、損が広がる前に決済するのが「損切り」です。逆指値やOCO注文を使えば、「ここまで上がったら利確」「ここまで下がったら損切り」を自動で予約できるので、チャートを張り付いていなくても安心です。</p>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">実際の画面で確認する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 視覚：チャートの読み方 -->
+    <section class="section" id="chart">
+      <div class="container">
+        <h2 class="section-title">難しい線は無視。見るのは「2つ」だけ。</h2>
+        <p class="section-lead">ローソク足（赤と青）と、トレンド（右肩上がりか下がりか）。</p>
+        <div class="content-block prose">
+          <h3>ローソク足</h3>
+          <p>上がりなら赤（または白）、下がりなら青（または黒）。まずは「今、相場が上向きか下向きか」を意識するだけでOK。細かいパターンは、慣れてから覚えれば大丈夫です。</p>
+          <h3>トレンド</h3>
+          <p>チャートが全体的に右肩上がりか、右肩下がりか。その「流れ」に乗るか、逆らうかで勝率が変わります。難しい線や指標は無視して、「赤と青」と「傾き」だけ見れば十分です。</p>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-secondary">チャートを触ってみる（デモ）</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ニュース：経済指標との付き合い方 -->
+    <section class="section section-alt" id="news">
+      <div class="container">
+        <h2 class="section-title">お祭りの日は、スマホが教えてくれる。</h2>
+        <p class="section-lead">アメリカ雇用統計の話。アプリの通知機能で「避ける」ことができる安心感。</p>
+        <div class="content-block prose">
+          <p>雇用統計や政策金利発表など、相場が急に動くタイミングがあります。アメリカの雇用統計は特に注目され、発表の瞬間に大きく値が飛ぶことも。</p>
+          <p>スマホアプリの通知で「いつ発表があるか」を把握し、その時間帯はポジションを持たない、または小さくするだけで、大きな暴落・暴騰を避けられます。お祭りの日は「参加しない」選択も、立派な戦略です。</p>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">アプリをダウンロード</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 夢と現実：複利の魔法 -->
+    <section class="section" id="compound">
+      <div class="container">
+        <h2 class="section-title">1万円を、1年後に142万円にする挑戦。</h2>
+        <p class="section-lead">毎週1.1倍のシミュレーション。「毎週勝てれば」という誠実な念押し。</p>
+        <div class="content-block prose">
+          <p>アインシュタインが「人類最大の発見」と呼んだのが複利です。</p>
+          <h3>1.1倍の積み重ね</h3>
+          <p>1万円を、毎週たったの1.1倍（10%プラス）にすることを目標にします。最初は「たったの1,000円か」と思うかもしれません。</p>
+          <h3>雪だるま式</h3>
+          <p>1週目の利益を2週目の軍資金に足し、それを繰り返すと……半年後には11.9万円、1年後には<strong>1,420,429円</strong>になります。</p>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>週</th>
+                <th>元金（円）</th>
+                <th>1.1倍後（円）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>10,000</td><td>10,000</td></tr>
+              <tr><td>4</td><td>14,641</td><td>16,105</td></tr>
+              <tr><td>8</td><td>21,435</td><td>23,579</td></tr>
+              <tr><td>12</td><td>31,384</td><td>34,522</td></tr>
+              <tr><td>26</td><td>114,974</td><td>126,471</td></tr>
+              <tr><td>52</td><td>1,291,496</td><td class="cell-highlight">1,420,429</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note"><strong>現実的な念押し：</strong>もちろん、毎週勝ち続けるのは至難の業です。負ける週も必ずあります。でも、「一発逆転」を狙うより「小さなプラスを積み重ねる」方が、はるかにゴールに近いことを知っておいてください。</p>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">少額から始める</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FXのウソ・ホント -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <h2 class="section-title">FXの「ウソ・ホント」</h2>
+        <p class="section-lead">よくある不安に、ズバッと答えます。</p>
+        <div class="faq-list">
+          <dl class="faq-item">
+            <dt>Q. 借金まみれになる？</dt>
+            <dd><strong>A. ホントはなりません。</strong> 日本の法律で「ロスカット」が義務付けられているため、預けたお金以上に損をすることは基本ありません。</dd>
+          </dl>
+          <dl class="faq-item">
+            <dt>Q. 英語ができないとダメ？</dt>
+            <dd><strong>A. ウソです。</strong> DMM FXのような日本の会社を使えば、管理画面もニュースもすべて日本語。スマホひとつで完結します。</dd>
+          </dl>
+          <dl class="faq-item">
+            <dt>Q. 土日はチャートが気になって休めない？</dt>
+            <dd><strong>A. ホントに休めます。</strong> 土日は世界中の市場が閉まるので、値動きはゼロ。FXのことは忘れて、家族や趣味に100%集中できる健全な投資です。</dd>
+          </dl>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">口座開設（無料）</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 結論：なぜ「環境」が一番大事なのか -->
+    <section class="section section-dark" id="environment">
+      <div class="container">
+        <h2 class="section-title">根性ではなく、インフラで勝つ。</h2>
+        <p class="section-lead">感情に負けないためのVPS、EA、そして信頼できるDMM FXの口座。</p>
+        <div class="content-block prose prose-inverse">
+          <p>FXで失敗する人の共通点は、<strong>「熱くなってルールを破る」</strong>ことです。</p>
+          <h3>感情は最大の敵</h3>
+          <p>「負けを取り返したい！」「もっと稼ぎたい！」という感情が、無理な取引を生み、ロスカットを招きます。</p>
+          <h3>仕組みで勝つ</h3>
+          <p>感情に左右されないために、プロは「環境」を整えます。24時間安定して動くサーバー（VPS）や、ルール通りに動く自動売買ツール（EA）。信頼できるFX口座（DMM FXなど）。これらを使いこなすことが、成功への最短ルートです。</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>DMM FX</h3>
+            <p>口座開設が簡単で、スプレッドが狭く、日本語サポートも充実。まずはここで口座を開き、デモ取引から慣れましょう。</p>
+          </div>
+          <div class="feature-card">
+            <h3>VPS（仮想サーバー）</h3>
+            <p>パソコンを24時間つけっぱなしにしなくても、EAを動かせます。ネットが止まっても、VPS上でプログラムが動き続けるので「見張り」から解放されます。</p>
+          </div>
+          <div class="feature-card">
+            <h3>EA（エキスパートアドバイザー）</h3>
+            <p>ルールに従って自動で売買するプログラム。人間の感情を排除し、決めたルールだけを実行します。</p>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="btn btn-primary">DMM FXで口座を開く</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. 第一歩：まずは「デモ」から -->
+    <section class="section cta-section" id="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="cta-title">リスクゼロで、1週間だけ遊んでみる。</h2>
+          <p class="cta-text">1円も使わずに本番を体験する、一番賢いスタート法。DMM FXの「デモ取引」なら、メールアドレスひとつで本番と同じツールを無料で使えます。まずは1週間、ゲーム感覚で「上か下か」を予想してポチポチしてみてください。もし合わなければ、そのままアプリを消すだけ。1円も失わず、新しい世界を覗いたという経験だけが残ります。</p>
+          <a href="#" class="btn btn-primary">デモ口座を開く（無料）</a>
+          <p class="cta-note">※リンク先は運営者が設定します。口座開設はご自身の判断でお願いします。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">MomoTool<span class="logo-dot">.</span>net</p>
+      <p class="footer-disclaimer">本サイトはFXの入門情報の提供を目的としており、投資の勧誘ではありません。取引はご自身の責任で行ってください。</p>
+      <p class="footer-copy">&copy; MomoTool.net</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('menuBtn');
+      var header = document.querySelector('.header');
+      if (btn && header) {
+        btn.addEventListener('click', function() {
+          header.classList.toggle('is-open');
+          btn.setAttribute('aria-label', header.classList.contains('is-open') ? 'メニューを閉じる' : 'メニューを開く');
+        });
+        document.querySelectorAll('.nav a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            header.classList.remove('is-open');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

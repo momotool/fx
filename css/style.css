@@ -286,6 +286,18 @@ body {
   min-width: 220px;
 }
 
+.btn-block {
+  width: 100%;
+  min-width: auto;
+}
+
+/* 準備中のリンク用（アフィリエイト設置前） */
+a.btn[href="#"][aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
 /* ========== セクション ========== */
 .section {
   padding: 5rem 1.5rem;
@@ -653,6 +665,56 @@ body {
   color: rgba(255, 255, 255, 0.88);
 }
 
+/* ========== おすすめ口座（ブローカーカード） ========== */
+.broker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.broker-card {
+  background: var(--color-bg-pure);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.broker-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
+  transform: translateY(-2px);
+}
+
+.broker-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.broker-desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.90625rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.broker-card .btn {
+  margin: 0;
+}
+
+.broker-note {
+  margin: 1.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  text-align: center;
+  line-height: 1.6;
+}
+
 /* ========== ブロック ========== */
 .info-block {
   background: var(--color-bg-pure);
@@ -829,6 +891,10 @@ body {
   }
 
   .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .broker-grid {
     grid-template-columns: 1fr;
   }
 

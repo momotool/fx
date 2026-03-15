@@ -1,0 +1,5 @@
+# momotool.net
+User-agent: *
+Allow: /
+
+Sitemap: https://momotool.net/sitemap.xml

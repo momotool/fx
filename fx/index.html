@@ -183,6 +183,22 @@
           <p>FXの凄いところは、<strong>「持っていないドルを、先に売る」</strong>ことができる点です。150円で「売る約束」をして、140円に値下がりした時に安く仕入れて渡す。これでも差額の10円が利益になります。</p>
           <p class="lead"><strong>つまり：</strong>景気が良くても悪くても、円安でも円高でも、「どっちかに動けばチャンス」。これが世界のお金の両替屋さん（FX）の全天候型の強みです。</p>
         </div>
+        <div class="interactive-widget" id="longshort-quiz">
+          <h3 class="interactive-widget-title">ミニクイズ：利益か損失か？</h3>
+          <p class="interactive-widget-lead">ドル円のイメージで、「プラス」か「マイナス」かを選んでみよう（※勉強用の超シンプル例です）。</p>
+          <div id="quiz-active">
+            <p class="quiz-progress" id="quiz-progress" aria-live="polite">問題 1 / 3</p>
+            <p class="quiz-question" id="quiz-question"></p>
+            <div class="quiz-actions">
+              <button type="button" class="btn btn-quiz btn-quiz-profit" id="quiz-btn-profit">利益</button>
+              <button type="button" class="btn btn-quiz btn-quiz-loss" id="quiz-btn-loss">損失</button>
+            </div>
+          </div>
+          <div id="quiz-complete" class="quiz-complete" hidden>
+            <p class="quiz-complete-text">3問おつかれさま！買い・売りの感覚、少しつかめたかな？</p>
+            <button type="button" class="btn btn-secondary" id="quiz-restart">もう一度チャレンジ</button>
+          </div>
+        </div>
         <div class="summary-box">
           <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
           <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>「買い」も「売り」もどっちでも利益が出る。</strong>上がっても下がってもチャンスだから、怖がらなくて大丈夫だよ。</p></div>
@@ -590,6 +606,42 @@
           </table>
         </div>
         <p class="table-note"><strong>現実的な念押し：</strong>もちろん、毎週勝ち続けるのは至難の業です。負ける週も必ずあります。でも、「一発逆転」を狙うより「小さなプラスを積み重ねる」方が、はるかにゴールに近いことを知っておいてください。</p>
+        <div class="interactive-widget compound-sim" id="compound-simulator">
+          <h3 class="interactive-widget-title">自分で試せる：複利シミュレーター</h3>
+          <p class="interactive-widget-lead">元金・目標の週利（％）・期間（週）を入れて、期末の資産と週ごとの推移をざっくり確認できます。</p>
+          <form class="compound-form" id="compound-form" action="#" novalidate>
+            <div class="compound-field">
+              <label for="compound-principal">元金（円）</label>
+              <input type="number" id="compound-principal" name="principal" min="1" step="1" value="10000" inputmode="numeric" required>
+            </div>
+            <div class="compound-field">
+              <label for="compound-rate">目標週利（％）</label>
+              <input type="number" id="compound-rate" name="rate" min="0" max="999" step="0.1" value="10" inputmode="decimal" required>
+            </div>
+            <div class="compound-field">
+              <label for="compound-weeks">期間（週）</label>
+              <input type="number" id="compound-weeks" name="weeks" min="1" max="520" step="1" value="52" inputmode="numeric" required>
+            </div>
+            <div class="compound-field compound-field-submit">
+              <button type="submit" class="btn btn-primary" id="compound-calc-btn">計算する</button>
+            </div>
+          </form>
+          <p class="compound-hint">※あくまで計算機です。実際の取引結果や将来のリターンを保証するものではありません。</p>
+          <div id="compound-output" class="compound-output" hidden>
+            <p class="compound-final" aria-live="polite"><span class="compound-final-label">最終金額（概算）</span><strong id="compound-final-yen">—</strong></p>
+            <div class="table-wrap compound-table-wrap">
+              <table class="data-table compound-result-table">
+                <thead>
+                  <tr>
+                    <th>週</th>
+                    <th>資産（円）</th>
+                  </tr>
+                </thead>
+                <tbody id="compound-result-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
         <div class="summary-box">
           <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
           <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>利子が利子を生む「複利」</strong>を味方にしよう。毎週10%は理想だけど、小さなプラスを積み重ねる考え方が本物なんだ。</p></div>
@@ -787,6 +839,21 @@
     </section>
   </main>
 
+  <div id="teacher-feedback" class="teacher-feedback" aria-hidden="true" hidden>
+    <button type="button" class="teacher-feedback-backdrop" aria-label="閉じる"></button>
+    <div class="teacher-feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="teacher-feedback-heading">
+      <button type="button" class="teacher-feedback-close" aria-label="閉じる">&times;</button>
+      <div class="teacher-feedback-inner">
+        <div class="teacher-feedback-icon" aria-hidden="true"><svg class="dialogue-icon"><use href="#icon-teacher"/></svg></div>
+        <div class="teacher-feedback-copy">
+          <p id="teacher-feedback-heading" class="teacher-feedback-heading"></p>
+          <p id="teacher-feedback-body" class="teacher-feedback-body"></p>
+          <button type="button" class="btn btn-primary teacher-feedback-ok" id="teacher-feedback-ok">わかった</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <p class="footer-logo">MomoTool<span class="logo-dot">.</span>net</p>
@@ -818,6 +885,149 @@
         }
       }
       if (document.readyState === 'complete') initMermaid(); else window.addEventListener('load', initMermaid);
+
+      /* 複利シミュレーター */
+      var compoundForm = document.getElementById('compound-form');
+      var compoundOutput = document.getElementById('compound-output');
+      var compoundFinalYen = document.getElementById('compound-final-yen');
+      var compoundTbody = document.getElementById('compound-result-tbody');
+      if (compoundForm && compoundOutput && compoundFinalYen && compoundTbody) {
+        compoundForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var principal = parseFloat(document.getElementById('compound-principal').value);
+          var rate = parseFloat(document.getElementById('compound-rate').value);
+          var weeks = parseInt(document.getElementById('compound-weeks').value, 10);
+          if (!isFinite(principal) || principal <= 0 || !isFinite(rate) || rate < 0 || !isFinite(weeks) || weeks < 1) return;
+          weeks = Math.min(520, Math.floor(weeks));
+          var factor = 1 + rate / 100;
+          var rows = [];
+          for (var w = 0; w <= weeks; w++) {
+            var balance = principal * Math.pow(factor, w);
+            rows.push({ week: w, balance: balance });
+          }
+          compoundFinalYen.textContent = Math.round(rows[rows.length - 1].balance).toLocaleString('ja-JP') + ' 円';
+          compoundTbody.innerHTML = '';
+          rows.forEach(function(row) {
+            var tr = document.createElement('tr');
+            var tdW = document.createElement('td');
+            tdW.textContent = String(row.week);
+            var tdB = document.createElement('td');
+            tdB.textContent = Math.round(row.balance).toLocaleString('ja-JP');
+            if (row.week === weeks) tdB.classList.add('cell-highlight');
+            tr.appendChild(tdW);
+            tr.appendChild(tdB);
+            compoundTbody.appendChild(tr);
+          });
+          compoundOutput.hidden = false;
+        });
+      }
+
+      /* 買い・売りミニクイズ + 先生ポップアップ */
+      var teacherRoot = document.getElementById('teacher-feedback');
+      var teacherHeading = document.getElementById('teacher-feedback-heading');
+      var teacherBody = document.getElementById('teacher-feedback-body');
+      var teacherOk = document.getElementById('teacher-feedback-ok');
+      var teacherClose = teacherRoot && teacherRoot.querySelector('.teacher-feedback-close');
+      var teacherBackdrop = teacherRoot && teacherRoot.querySelector('.teacher-feedback-backdrop');
+      var afterTeacherClose = null;
+
+      function openTeacher(title, body, onClose) {
+        if (!teacherRoot || !teacherHeading || !teacherBody) return;
+        teacherHeading.textContent = title;
+        teacherBody.textContent = body;
+        afterTeacherClose = typeof onClose === 'function' ? onClose : null;
+        teacherRoot.hidden = false;
+        teacherRoot.classList.add('is-open');
+        teacherRoot.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (teacherOk) teacherOk.focus();
+      }
+
+      function closeTeacher() {
+        if (!teacherRoot) return;
+        teacherRoot.classList.remove('is-open');
+        teacherRoot.setAttribute('aria-hidden', 'true');
+        teacherRoot.hidden = true;
+        document.body.style.overflow = '';
+        var cb = afterTeacherClose;
+        afterTeacherClose = null;
+        if (cb) cb();
+      }
+
+      if (teacherOk) teacherOk.addEventListener('click', closeTeacher);
+      if (teacherClose) teacherClose.addEventListener('click', closeTeacher);
+      if (teacherBackdrop) teacherBackdrop.addEventListener('click', closeTeacher);
+      document.addEventListener('keydown', function(ev) {
+        if (ev.key === 'Escape' && teacherRoot && teacherRoot.classList.contains('is-open')) closeTeacher();
+      });
+
+      var quizQuestions = [
+        {
+          text: '1ドル150円でドルを買いました（ロング）。レートが155円になったら？',
+          correct: 'profit',
+          ok: 'そのとおり！ドルが「高く」なったので、安く買ったドルを高く売れるイメージ＝利益だよ。',
+          ng: 'ロングはドル高がうれしいんだ。155円なら買い値より売れるから、利益のパターンだよ。もう一度イメージしてみてね。'
+        },
+        {
+          text: '1ドル150円でドルを買いました（ロング）。レートが145円になったら？',
+          correct: 'loss',
+          ok: 'バッチリ！ドルが「安く」なったので、高く買ったドルの価値が下がる＝損失だね。',
+          ng: 'ロングはドル安がきついよ。145円なら買ったときより安いから、損失になりやすいんだ。'
+        },
+        {
+          text: '1ドル150円でドルを売りました（ショート）。レートが145円になったら？',
+          correct: 'profit',
+          ok: 'ナイス！ショートは「高く売って、安く買い戻す」と嬉しい。150円で売って145円なら、その差がプラスだよ。',
+          ng: 'ショートは円高（ドル安）を味方にできるんだ。145円なら買い戻しが安くて利益になりやすいよ。'
+        }
+      ];
+
+      var quizIndex = 0;
+      var quizProgress = document.getElementById('quiz-progress');
+      var quizQuestionEl = document.getElementById('quiz-question');
+      var quizActive = document.getElementById('quiz-active');
+      var quizComplete = document.getElementById('quiz-complete');
+      var quizRestart = document.getElementById('quiz-restart');
+      var quizBtnProfit = document.getElementById('quiz-btn-profit');
+      var quizBtnLoss = document.getElementById('quiz-btn-loss');
+
+      function renderQuiz() {
+        if (quizComplete) quizComplete.hidden = true;
+        if (quizActive) quizActive.hidden = false;
+        var q = quizQuestions[quizIndex];
+        if (quizProgress) quizProgress.textContent = '問題 ' + (quizIndex + 1) + ' / ' + quizQuestions.length;
+        if (quizQuestionEl) quizQuestionEl.textContent = q.text;
+      }
+
+      function finishQuiz() {
+        if (quizActive) quizActive.hidden = true;
+        if (quizComplete) quizComplete.hidden = false;
+      }
+
+      function onQuizAnswer(choice) {
+        var q = quizQuestions[quizIndex];
+        var ok = choice === q.correct;
+        openTeacher(ok ? '正解！' : 'おさらいだよ', ok ? q.ok : q.ng, function() {
+          if (quizIndex < quizQuestions.length - 1) {
+            quizIndex++;
+            renderQuiz();
+          } else {
+            finishQuiz();
+          }
+        });
+      }
+
+      if (quizBtnProfit && quizBtnLoss) {
+        quizBtnProfit.addEventListener('click', function() { onQuizAnswer('profit'); });
+        quizBtnLoss.addEventListener('click', function() { onQuizAnswer('loss'); });
+      }
+      if (quizRestart) {
+        quizRestart.addEventListener('click', function() {
+          quizIndex = 0;
+          renderQuiz();
+        });
+      }
+      if (quizQuestionEl && quizQuestions.length) renderQuiz();
     })();
   </script>
   <script type="module" src="assets/brokers.js"></script>

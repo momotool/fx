@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="assets/brokers.css">
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
 </head>
-<body>
+<body class="page-fx">
   <!-- 会話用アイコン（初心者・先生） -->
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true">
     <symbol id="icon-beginner" viewBox="0 0 48 48">
@@ -36,11 +36,17 @@
       <path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/>
     </symbol>
   </svg>
-  <header class="header">
+  <header class="header header-fx">
     <div class="header-inner">
-      <a href="../" class="logo">MomoTool<span class="logo-dot">.</span>net</a>
-      <nav class="nav">
-        <a href="../">サイトトップ</a>
+      <div class="header-brand-row">
+        <a href="./" class="logo" title="このガイドの先頭へ">MomoTool<span class="logo-dot">.</span>net<span class="logo-suffix"> FX</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="nav nav-fx" aria-label="ページ内リンク">
         <a href="#intro">FXってなに？</a>
         <a href="#mechanism">儲ける仕組み</a>
         <a href="#rules">3大ルール</a>
@@ -53,11 +59,6 @@
         <a href="#brokers">おすすめ口座</a>
         <a href="#cta">デモから</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </header>
 

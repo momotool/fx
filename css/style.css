@@ -51,13 +51,14 @@ html {
   scroll-padding-top: var(--header-fixed-height);
 }
 
+/* FX：固定トップ（ヘッダー＋ヘッダー下広告）のぶん body ずらし */
 html:has(body.page-fx) {
-  --header-fixed-height: 4rem;
+  --header-fixed-height: 11rem;
 }
 
 @media (min-width: 769px) {
   html:has(body.page-fx) {
-    --header-fixed-height: 8.75rem;
+    --header-fixed-height: 13rem;
   }
 }
 
@@ -159,6 +160,36 @@ body {
   transition: var(--transition);
 }
 
+/* ========== FXページ：ヘッダー＋広告をまとめて固定 ========== */
+body.page-fx .fx-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 251, 252, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 14px rgba(44, 58, 82, 0.07);
+}
+
+body.page-fx .fx-fixed-top .header {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+  border-bottom: none;
+  box-shadow: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.page-fx .fx-fixed-top .sponsor-strip--leader {
+  border-top: 1px solid var(--color-border-light);
+}
+
 /* ========== FXページ：ヘッダー（親サイトへ飛ばない・ナビ整理） ========== */
 .logo-suffix {
   font-weight: 600;
@@ -172,9 +203,9 @@ body {
   body.page-fx .header-inner {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.875rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    gap: 0.45rem;
+    padding-top: 0.65rem;
+    padding-bottom: 0.5rem;
   }
 
   body.page-fx .header-brand-row {
@@ -189,33 +220,57 @@ body {
   }
 
   body.page-fx .header-fx {
-    box-shadow: 0 1px 0 rgba(44, 58, 82, 0.055);
+    box-shadow: none;
   }
 
+  /* ナビは 1 行（狭い幅では横スクロール） */
   body.page-fx .nav-fx {
     width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.45rem;
-    padding: 0.625rem 0.875rem;
+    max-width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 0.18rem 0.28rem;
+    padding: 0.4rem 0.45rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(44, 58, 82, 0.22) transparent;
     background: rgba(255, 255, 255, 0.82);
     border: 1px solid var(--color-border-light);
     border-radius: 14px;
     box-shadow: var(--shadow-xs);
   }
 
+  body.page-fx .nav-fx::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  body.page-fx .nav-fx::-webkit-scrollbar-thumb {
+    background: rgba(44, 58, 82, 0.22);
+    border-radius: var(--radius-full);
+  }
+
   body.page-fx .nav-fx a {
-    font-size: 0.78125rem;
+    font-size: clamp(0.6875rem, 0.22vw + 0.65rem, 0.75rem);
     font-weight: 500;
-    padding: 0.4rem 0.65rem;
+    padding: 0.28rem 0.42rem;
     border-radius: var(--radius-full);
     color: var(--color-text-muted);
+    flex-shrink: 0;
     transition: background var(--transition), color var(--transition);
   }
 
   body.page-fx .nav-fx a:hover {
     color: var(--color-accent);
     background: var(--color-accent-bg);
+  }
+
+  @media (min-width: 1100px) {
+    body.page-fx .nav-fx {
+      justify-content: center;
+      overflow-x: visible;
+    }
   }
 }
 

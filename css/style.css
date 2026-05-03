@@ -245,12 +245,7 @@ body {
   }
 }
 
-/* ========== FXページ：スポンサー（リーダーボード・サイドスカイ） ========== */
-body.page-fx {
-  --fx-ad-rail: 160px;
-  --fx-ad-gap: 1.25rem;
-}
-
+/* ========== FXページ：ヘッダー下リーダーボードのみ ========== */
 /* ヘッダー下リーダーボード：親で横いっぱい＋中身を中央 */
 body.page-fx .sponsor-strip--leader {
   display: flex;
@@ -344,126 +339,6 @@ body.page-fx .sponsor-pixel {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/*
- * メインレイアウト：[左 160px][メイン max 1080px][右 160px] を flex で横並び
- * 1200px 以下：サイドは非表示ではなく、記事ブロックの下へ縦積み（order で並べ替え）
- */
-body.page-fx .page-layout-fx {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--fx-ad-gap);
-  width: 100%;
-  max-width: calc(1080px + (var(--fx-ad-rail) * 2) + (var(--fx-ad-gap) * 2));
-  margin-inline: auto;
-  padding-inline: 1rem;
-  box-sizing: border-box;
-}
-
-body.page-fx .page-layout-center {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: 1080px;
-}
-
-body.page-fx .page-rail {
-  flex: 0 0 var(--fx-ad-rail);
-  width: var(--fx-ad-rail);
-  min-width: var(--fx-ad-rail);
-  max-width: var(--fx-ad-rail);
-  box-sizing: border-box;
-}
-
-body.page-fx .page-rail-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-body.page-fx .sponsor-sky-link {
-  display: block;
-  line-height: 0;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: var(--shadow-xs);
-  transition: box-shadow var(--transition), transform 0.2s var(--ease-out);
-}
-
-body.page-fx .sponsor-sky-link:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
-}
-
-body.page-fx .sponsor-sky-img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 600px;
-  margin-inline: auto;
-}
-
-body.page-fx .sponsor-sky-img--narrow {
-  max-width: 120px;
-}
-
-body.page-fx .sponsor-sky-img--wide {
-  max-width: 160px;
-}
-
-@media (min-width: 1201px) {
-  body.page-fx .page-rail-inner {
-    position: sticky;
-    top: calc(var(--header-fixed-height) + 0.5rem);
-    padding-bottom: 1rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  body.page-fx .page-layout-fx {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    max-width: 100%;
-    gap: 1.5rem;
-    padding-inline: 0;
-    padding-block-end: 2rem;
-  }
-
-  body.page-fx .page-layout-center {
-    flex: none;
-    width: 100%;
-    max-width: none;
-    order: -1;
-  }
-
-  body.page-fx .page-rail {
-    flex: none;
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-    padding-inline: 1rem;
-    box-sizing: border-box;
-  }
-
-  body.page-fx .page-rail--left {
-    order: 2;
-  }
-
-  body.page-fx .page-rail--right {
-    order: 3;
-  }
-
-  body.page-fx .page-rail-inner {
-    position: static;
-    align-items: center;
-    padding-inline: 0;
-  }
 }
 
 /* ========== ヒーロー ========== */

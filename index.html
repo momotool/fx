@@ -3,64 +3,850 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MomoTool（モモツール）｜momotool.net</title>
-  <meta name="description" content="momotool.net — 様々なジャンルのガイドの入口。FX・ツール紹介など、わかりやすいコンテンツのトップです。">
-  <link rel="canonical" href="https://momotool.net/">
-  <meta property="og:url" content="https://momotool.net/">
-  <meta property="og:title" content="MomoTool（モモツール）｜momotool.net">
-  <meta property="og:description" content="momotool.net — 様々なジャンルのガイドの入口。FX・ツール紹介など、わかりやすいコンテンツのトップです。">
+  <title>超初心者のためのFX環境構築ナビ｜MomoTool（momotool.net）</title>
+  <meta name="description" content="「上か下か」のシンプルな世界を、正しく歩くための手順書。根性ではなく、インフラで勝つ。超初心者専用のFX環境構築ガイド。">
+  <link rel="canonical" href="https://momotool.net/fx/">
+  <meta property="og:url" content="https://momotool.net/fx/">
+  <meta property="og:title" content="超初心者のためのFX環境構築ナビ｜MomoTool（momotool.net）">
+  <meta property="og:description" content="「上か下か」のシンプルな世界を、正しく歩くための手順書。根性ではなく、インフラで勝つ。超初心者専用のFX環境構築ガイド。">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/brokers.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
 </head>
-<body>
-  <header class="header">
+<body class="page-fx">
+  <!-- 会話用アイコン（初心者・先生） -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true">
+    <symbol id="icon-beginner" viewBox="0 0 48 48">
+      <circle cx="24" cy="26" r="16" fill="#E8EEF4" stroke="#9CA3AF" stroke-width="1.2"/>
+      <ellipse cx="20" cy="25" rx="2.5" ry="3" fill="#5a6578"/>
+      <ellipse cx="28" cy="25" rx="2.5" ry="3" fill="#5a6578"/>
+      <path d="M 18 34 Q 24 38 30 34" stroke="#6B7280" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="18" cy="30" rx="3" ry="1.5" fill="#FECDD3" opacity="0.7"/>
+      <ellipse cx="30" cy="30" rx="3" ry="1.5" fill="#FECDD3" opacity="0.7"/>
+    </symbol>
+    <symbol id="icon-teacher" viewBox="0 0 48 48">
+      <circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/>
+      <ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/>
+      <ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/>
+      <path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+  <header class="header header-fx">
     <div class="header-inner">
-      <a href="./" class="logo">MomoTool<span class="logo-dot">.</span>net</a>
-      <nav class="nav">
-        <a href="fx/">FX</a>
+      <div class="header-brand-row">
+        <a href="./" class="logo" title="このガイドの先頭へ">MomoTool<span class="logo-dot">.</span>net<span class="logo-suffix"> FX</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="nav nav-fx" aria-label="ページ内リンク">
+        <a href="#intro">FXってなに？</a>
+        <a href="#mechanism">儲ける仕組み</a>
+        <a href="#rules">3大ルール</a>
+        <a href="#orders">注文と決済</a>
+        <a href="#chart">チャート</a>
+        <a href="#news">経済指標</a>
+        <a href="#compound">複利の魔法</a>
+        <a href="#faq">ウソ・ホント</a>
+        <a href="#environment">環境が大事</a>
+        <a href="#brokers">おすすめ口座</a>
+        <a href="#cta">デモから</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </header>
 
+  <div class="sponsor-strip sponsor-strip--leader">
+    <div class="sponsor-strip-inner">
+      <p class="sponsor-label">スポンサーリンク</p>
+      <div class="sponsor-leaderboard">
+        <a class="sponsor-leaderboard-link" href="https://px.a8.net/svt/ejp?a8mat=3TAN11+AGVHSI+1FOU+614CX" rel="nofollow sponsored noopener" target="_blank">
+          <img class="sponsor-leaderboard-img" src="https://www29.a8.net/svt/bgt?aid=230603797633&amp;wid=005&amp;eno=01&amp;mid=s00000006699001013000&amp;mc=1" alt="" width="728" height="90" decoding="async">
+        </a>
+        <img class="sponsor-pixel" src="https://www11.a8.net/0.gif?a8mat=3TAN11+AGVHSI+1FOU+614CX" width="1" height="1" alt="">
+      </div>
+    </div>
+  </div>
+
   <main>
+    <!-- ヒーロー -->
     <section class="hero">
       <div class="hero-inner">
-        <p class="hero-label">サイトトップ</p>
+        <p class="hero-label">FX トップ</p>
         <h1 class="hero-title">
-          様々なジャンルの、<br>
-          ガイド入口。
+          「上か下か」のシンプルな世界を、<br>
+          正しく歩くための手順書。
         </h1>
         <p class="hero-sub">
-          FX・ツール紹介など、ジャンルごとのコンテンツはここから。わかりやすく、一歩ずつ。
+          根性ではなく、インフラで勝つ。超初心者専用のFX環境構築ガイド。
         </p>
-        <a href="fx/" class="btn btn-primary">FXを読む</a>
       </div>
       <div class="hero-accent"></div>
     </section>
 
-    <section class="section section-alt">
+    <!-- 1. はじめに：FXってなに？ -->
+    <section class="section section-first" id="intro">
       <div class="container">
-        <h2 class="section-title">ジャンル</h2>
-        <div class="card-grid">
-          <a href="fx/" class="card" style="text-decoration: none; color: inherit;">
-            <span class="card-icon">📈</span>
-            <h3>FX</h3>
-            <p>FXのトップ。超初心者のための環境構築ナビ。「上か下か」の世界を正しく歩く手順書。デモ取引の始め方まで。</p>
-          </a>
-          <div class="card" style="opacity: 0.85;">
-            <span class="card-icon">🔧</span>
-            <h3>ツール紹介（準備中）</h3>
-            <p>今後、便利なツールやサービスの紹介を追加予定です。</p>
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">お金の両替で、お小遣いを稼ぐ。</h2>
+        <p class="section-lead">株との違い（24時間営業）、会社員や夜型の人に最適という話。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">FXって聞いたことあるけど、難しそうで怖い…。</p>
+            </div>
           </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">大丈夫。旅行先で円をドルに替える「両替」と同じイメージだよ。世界のお金の両替屋さんで、その差額でお小遣いを狙うだけ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">両替なら旅行でやったことある…。それの「差額」で稼ぐってこと？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">そうそう。円安のときに円でドル買って、円高になったらドルを円に戻す。そのときのレートの差が自分のお小遣いになるイメージ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">なるほど、ちょっとイメージ湧いた。それならやってみようかな。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <p><strong>世界のお金の両替屋さん（FX＝外国為替<ruby>証拠金<rt>しょうこきん</rt></ruby>取引）</strong>をひと言で言うと、<strong>「通貨の価値が変わるのを利用した両替」</strong>です。</p>
+          <h3>株との違い</h3>
+          <p>株は「特定の会社」を応援しますが、FXは「日本」や「アメリカ」という「国」を相手にします。会社が倒産して紙切れになるリスクより、国のお金がゼロになるリスクの方が圧倒的に低いため、初心者でも入りやすいのが特徴です。</p>
+          <h3>24時間営業</h3>
+          <p>株は平日の昼間（9:00〜15:00）しかできませんが、FXは月曜朝から土曜朝まで、世界中のどこかの市場が常に開いています。</p>
+          <p class="lead"><strong>つまり：</strong>仕事が終わって帰宅した後、ビールを飲みながら「寝る前の30分」で完結できるのが、現代人にとって最大のメリットです。</p>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div>
+            <p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p>
+            <p><strong>FX＝世界のお金の両替。</strong>円とドルなどの「差額」でお小遣いを狙うだけ。24時間できるから、寝る前の30分でもできるんだよ。</p>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">おすすめ口座を見る</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 仕組み：どうやって儲けるの？ -->
+    <section class="section section-alt" id="mechanism">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">上がっても、下がっても、利益になる。</h2>
+        <p class="section-lead">リンゴの例え。買い（ロング）と、持ってないものを売る「売り（ショート）」の解説。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">上がっても下がっても儲かるって、なんか怪しい…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">怪しくないよ。コンビニで「安く仕入れて高く売る」のと同じ。円安のときは「買い」、円高のときは「売り」で差額をもらうだけ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">「売り」って、持ってないのに売れるの？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">うん。先に「〇〇円で売る」って約束して、あとで安く買って渡せば差額が利益になる。仕組みは買いと対称なだけ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">どっちに動いてもチャンスがあるなら、ちょっと安心した。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <p>世界のお金の両替屋さん（FX）で利益が出る仕組みは、実はコンビニの商売と同じくらいシンプルです。</p>
+          <h3>買い（ロング）</h3>
+          <p>1ドル140円の時に買って、150円になったら売る。差額の10円が利益です。これはイメージしやすいですよね。</p>
+          <h3>売り（ショート）</h3>
+          <p>FXの凄いところは、<strong>「持っていないドルを、先に売る」</strong>ことができる点です。150円で「売る約束」をして、140円に値下がりした時に安く仕入れて渡す。これでも差額の10円が利益になります。</p>
+          <p class="lead"><strong>つまり：</strong>景気が良くても悪くても、円安でも円高でも、「どっちかに動けばチャンス」。これが世界のお金の両替屋さん（FX）の全天候型の強みです。</p>
+        </div>
+        <div class="interactive-widget" id="longshort-quiz">
+          <h3 class="interactive-widget-title">ミニクイズ：利益か損失か？</h3>
+          <p class="interactive-widget-lead">ドル円のイメージで、「プラス」か「マイナス」かを選んでみよう（※勉強用の超シンプル例です）。</p>
+          <div id="quiz-active">
+            <p class="quiz-progress" id="quiz-progress" aria-live="polite">問題 1 / 3</p>
+            <p class="quiz-question" id="quiz-question"></p>
+            <div class="quiz-actions">
+              <button type="button" class="btn btn-quiz btn-quiz-profit" id="quiz-btn-profit">利益</button>
+              <button type="button" class="btn btn-quiz btn-quiz-loss" id="quiz-btn-loss">損失</button>
+            </div>
+          </div>
+          <div id="quiz-complete" class="quiz-complete" hidden>
+            <p class="quiz-complete-text">3問おつかれさま！買い・売りの感覚、少しつかめたかな？</p>
+            <button type="button" class="btn btn-secondary" id="quiz-restart">もう一度チャレンジ</button>
+          </div>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>「買い」も「売り」もどっちでも利益が出る。</strong>上がっても下がってもチャンスだから、怖がらなくて大丈夫だよ。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-secondary">口座を選んでデモを体験</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ルール：FXの「3大ルール」 -->
+    <section class="section" id="rules">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">これだけ知っていれば、プロと話せる。</h2>
+        <p class="section-lead">レバレッジ（25倍）、スワップ（金利）、ロスカット（安全装置）。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">レバレッジとかロスカットとか、用語が多すぎて怖い…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">まず「レバレッジ」だね。1万円を口座に預けると、25万円分の取引ができるってこと。魔法の杖で力が25倍になるイメージ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">25倍って…借金みたいにならない？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">そこを守ってくれるのが「ロスカット」。損が広がりすぎる前に自動で止めてくれる安全装置で、お財布が空になる前にストップしてくれるから、預けたお金以上に飛ぶことはほぼないんだ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">ロスカットがあるなら、そこまで怖くないかも。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">じゃあ、スワップってなに？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">低金利の円を売って高金利のドルなんかを持ってると、毎日ちょっとずつ金利の差額が入ってくるやつ。お小遣いがチャリンと入るイメージ。この3つ押さえとけば大丈夫。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">なるほど、それなら安心した。</p>
+            </div>
+          </div>
+        </div>
+        <div class="num-card-grid">
+          <article class="num-card">
+            <span class="num-card-num">01</span>
+            <h3>レバレッジ＝「1万円が25倍の力を持つ」魔法の杖</h3>
+            <p>手元に1万円しかなくても、口座に預ければ最大25万円分（25倍）の取引ができます。少ない資金で効率よく増やせるブースト機能です。</p>
+          </article>
+          <article class="num-card">
+            <span class="num-card-num">02</span>
+            <h3>スワップ（金利）</h3>
+            <p>低金利の日本円を売って、高金利の外貨（ドルやメキシコペソなど）を持っているだけで、毎日「金利の差額」がチャリンとお小遣いのように入ってきます。</p>
+          </article>
+          <article class="num-card">
+            <span class="num-card-num">03</span>
+            <h3>ロスカット＝お財布が空っぽになる前に、強制終了してくれる安全装置</h3>
+            <p>予想が外れて損が膨らんだ時、会社が自動的に取引を止めてくれます。大火事になる前にスプリンクラーが回るようなもので、あなたの資産を守る最後の砦です。</p>
+          </article>
+        </div>
+        <p class="section-lead" style="margin-top: 2rem;">1万円が25倍のパワーになる仕組み（イメージ）</p>
+        <div class="leverage-diagram">
+          <div class="leverage-step">
+            <span class="leverage-label">あなたが預ける</span>
+            <span class="leverage-value">1万円</span>
+          </div>
+          <span class="leverage-arrow" aria-hidden="true">→</span>
+          <div class="leverage-step leverage-step-mid">
+            <span class="leverage-label">レバレッジ</span>
+            <span class="leverage-value">×25倍</span>
+          </div>
+          <span class="leverage-arrow" aria-hidden="true">→</span>
+          <div class="leverage-step leverage-step-result">
+            <span class="leverage-label">取引に使える</span>
+            <span class="leverage-value">25万円分</span>
+          </div>
+        </div>
+        <p class="leverage-diagram-note">※1万円を口座に預けると、25万円分までの取引ができる、というイメージです。</p>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>レバレッジ・スワップ・ロスカット</strong>の3つを押さえればOK。1万円が25倍の力になること、金利の差額がもらえること、損が広がりすぎる前に止めてくれること、この3つだよ。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">口座を比較する</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 操作：注文と決済の方法 -->
+    <section class="section section-alt" id="orders">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">「今すぐ」か「予約」か、選ぶだけ。</h2>
+        <p class="section-lead">成行・指値・逆指値。そして終わらせ方（利確・損切り）の自動予約について。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">注文の種類が多すぎて、どれを押せばいいか分からない…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">最初は「今すぐ買う」の成行だけでOK。ネットショップで「今の価格で注文」するのと同じ感覚だよ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">指値とか逆指値はいつ使うの？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">「〇〇円になったら買う」「ここまで下がったら<ruby>損切り<rt>そんぎり</rt></ruby>」みたいな予約ができるやつ。慣れたら使えばOK。最初は成行だけで十分。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">よし、まずは成行だけ覚えよう。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <h3>注文の種類</h3>
+          <ul>
+            <li><strong>成行（なりゆき）：</strong>今の価格で「今すぐ」買う・売る。シンプルで迷わない。</li>
+            <li><strong>指値：</strong>「〇〇円になったら買う」とあらかじめ予約。希望価格で確実に<ruby>約定<rt>やくじょう</rt></ruby>したい時に。</li>
+            <li><strong>逆指値：</strong>「〇〇円を割ったら売る」など、価格が動いたタイミングで自動発動。利確や<ruby>損切り<rt>そんぎり</rt></ruby>を「予約」しておける。</li>
+          </ul>
+          <h3>終わらせ方（利確・<ruby>損切り<rt>そんぎり</rt></ruby>）</h3>
+          <p>利益が出たところで決済するのが「利確」、損が広がる前に決済するのが「<ruby>損切り<rt>そんぎり</rt></ruby>」です。逆指値やOCO注文を使えば、「ここまで上がったら利確」「ここまで下がったら<ruby>損切り<rt>そんぎり</rt></ruby>」を自動で予約できるので、チャートを張り付いていなくても安心です。</p>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>最初は「成行」だけ覚えればOK。</strong>指値・逆指値は慣れたらで大丈夫。「〇〇円になったら買う」「ここまで下がったら<ruby>損切り<rt>そんぎり</rt></ruby>」はあとから選んでみてね。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">口座で実際の画面を確認</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 視覚：チャートの読み方 -->
+    <section class="section" id="chart">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">難しい線は無視。見るのは「2つ」だけ。</h2>
+        <p class="section-lead">ローソク足（赤と青）と、トレンド（右肩上がりか下がりか）。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">チャートってギザギザで難しそう…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">赤と青の棒だけ見ればOK。上がってるか下がってるか、それだけ。天気予報のグラフを見るようなものだよ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">細かい線とか数字は無視していいの？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">最初は無視でOK。全体が右肩上がりか下がりか、その「流れ」だけ意識すれば十分。あとは慣れで。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">赤と青と傾きだけね。それならなんとかできそう。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <h3>これがローソク足だよ！基本の形</h3>
+          <p>ローソク足は、ある一定期間（1分、1時間、1日など）の価格の動きを一本の棒で表したものなんだ。大きく分けて<strong>「陽線（ようせん）」</strong>と<strong>「陰線（いんせん）」</strong>の2種類があるよ。</p>
+
+          <figure class="candlestick-figure candlestick-figure-basic" aria-label="陽線と陰線の基本形">
+            <svg class="candlestick-diagram" viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" role="img">
+              <title>陽線：始値が下・終値が上。陰線：始値が上・終値が下。</title>
+              <!-- 陽線（左）：価格が上がった＝赤・始値下・終値上 -->
+              <g class="candle-you">
+                <line x1="100" y1="45" x2="100" y2="200" stroke="#5a6578" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="82" y="115" width="36" height="70" rx="3" fill="#e07a7a" stroke="#c96868" stroke-width="1"/>
+                <line x1="100" y1="45" x2="100" y2="115" stroke="#e07a7a" stroke-width="2" stroke-linecap="round"/>
+                <line x1="100" y1="185" x2="100" y2="200" stroke="#e07a7a" stroke-width="2" stroke-linecap="round"/>
+                <text x="100" y="228" text-anchor="middle" font-size="14" font-weight="bold" fill="#2d3748">陽線（通常は赤や白）</text>
+                <text x="100" y="248" text-anchor="middle" font-size="11" fill="#5c6b7d">価格が上がったことを表す</text>
+                <text x="55" y="125" text-anchor="end" font-size="11" fill="#2d3748">終値</text>
+                <text x="55" y="195" text-anchor="end" font-size="11" fill="#2d3748">始値</text>
+                <line x1="60" y1="118" x2="80" y2="118" stroke="#5c6b7d" stroke-width="0.8" stroke-dasharray="2 2"/>
+                <line x1="60" y1="192" x2="80" y2="192" stroke="#5c6b7d" stroke-width="0.8" stroke-dasharray="2 2"/>
+              </g>
+              <!-- 陰線（右）：価格が下がった＝青・始値上・終値下 -->
+              <g class="candle-in">
+                <line x1="280" y1="50" x2="280" y2="200" stroke="#5a6578" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="262" y="95" width="36" height="90" rx="3" fill="#3d4d6b" stroke="#2c3a52" stroke-width="1"/>
+                <line x1="280" y1="50" x2="280" y2="95" stroke="#3d4d6b" stroke-width="2" stroke-linecap="round"/>
+                <line x1="280" y1="185" x2="280" y2="200" stroke="#3d4d6b" stroke-width="2" stroke-linecap="round"/>
+                <text x="280" y="228" text-anchor="middle" font-size="14" font-weight="bold" fill="#2d3748">陰線（通常は青や黒）</text>
+                <text x="280" y="248" text-anchor="middle" font-size="11" fill="#5c6b7d">価格が下がったことを表す</text>
+                <text x="325" y="102" text-anchor="start" font-size="11" fill="#2d3748">始値</text>
+                <text x="325" y="192" text-anchor="start" font-size="11" fill="#2d3748">終値</text>
+                <line x1="300" y1="98" x2="320" y2="98" stroke="#5c6b7d" stroke-width="0.8" stroke-dasharray="2 2"/>
+                <line x1="300" y1="188" x2="320" y2="188" stroke="#5c6b7d" stroke-width="0.8" stroke-dasharray="2 2"/>
+              </g>
+              <!-- 実体・ヒゲのラベル（中央下） -->
+              <text x="190" y="268" text-anchor="middle" font-size="11" fill="#8b95a6">陽線と陰線で、始値と終値の位置が逆になるのがポイント</text>
+            </svg>
+            <figcaption class="candlestick-caption">図の解説：陽線は始値が下・終値が上。陰線は始値が上・終値が下。</figcaption>
+          </figure>
+
+          <p><strong>陽線（通常は赤や白）：</strong>価格が上がったことを表すよ。始値（はじめね）はその期間の「始まり」の価格で下にある。終値（おわりね）は「終わり」の価格で上にある。</p>
+          <p><strong>陰線（通常は青や黒）：</strong>価格が下がったことを表すよ。始値は上、終値は下にある。陽線と陰線で、始値と終値の位置が逆になるのがポイントだね。</p>
+
+          <h3>「実体」と「ヒゲ」ってなに？</h3>
+          <p>ローソク足は、太い部分と細い棒の部分でできているんだ。</p>
+          <p><strong>実体（じったい）：</strong>始値と終値に囲まれた、太い部分のことだよ。その期間にどれくらい価格が動いたかがひと目で分かるんだ。</p>
+          <p><strong>ヒゲ：</strong>実体から上下に伸びている、細い線のことだよ。<strong>上ヒゲ</strong>はその期間につけた「一番高い価格（高値）」を表す。<strong>下ヒゲ</strong>は「一番安い価格（安値）」を表すよ。</p>
+          <p>実体が長ければ「勢いが強い」、ヒゲが長ければ「その価格まで行ったけど、押し戻された」ということが分かるんだよ。</p>
+
+          <figure class="candlestick-figure candlestick-figure-basic" aria-label="実体とヒゲの説明図">
+            <svg class="candlestick-diagram" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img">
+              <title>実体＝始値と終値の幅。上ヒゲ＝高値、下ヒゲ＝安値。</title>
+              <!-- 1本のローソクで実体・上ヒゲ・下ヒゲを表示 -->
+              <line x1="160" y1="25" x2="160" y2="175" stroke="#5a6578" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="130" y="70" width="60" height="90" rx="4" fill="#e07a7a" stroke="#c96868" stroke-width="1"/>
+              <line x1="160" y1="25" x2="160" y2="70" stroke="#e07a7a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="160" y1="160" x2="160" y2="175" stroke="#e07a7a" stroke-width="2.5" stroke-linecap="round"/>
+              <text x="160" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="#2d3748">上ヒゲ（高値）</text>
+              <text x="240" y="115" text-anchor="start" font-size="12" font-weight="bold" fill="#2d3748">実体</text>
+              <text x="240" y="132" text-anchor="start" font-size="10" fill="#5c6b7d">始値〜終値</text>
+              <text x="160" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#2d3748">下ヒゲ（安値）</text>
+              <line x1="165" y1="115" x2="230" y2="115" stroke="#8b95a6" stroke-width="0.6" stroke-dasharray="3 2"/>
+            </svg>
+            <figcaption class="candlestick-caption">実体＝始値と終値の範囲。ヒゲ＝その期間の高値・安値。</figcaption>
+          </figure>
+
+          <h3>トレンド</h3>
+          <p>チャートが全体的に右肩上がりか、右肩下がりか。その「流れ」に乗るか、逆らうかで勝率が変わります。難しい線や指標は無視して、「赤と青」と「傾き」だけ見れば十分です。</p>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>赤と青の棒（ローソク足）と、傾き（トレンド）</strong>だけ見ればOK。細かい線は無視して大丈夫だよ。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-secondary">口座を選んでチャートを触る（デモ）</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ニュース：経済指標との付き合い方 -->
+    <section class="section section-alt" id="news">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">お祭りの日は、スマホが教えてくれる。</h2>
+        <p class="section-lead">アメリカ雇用統計の話。アプリの通知機能で「避ける」ことができる安心感。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">雇用統計とか、急に相場が動くって聞いて怖い…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">お祭りの日は「参加しない」選択でOK。アプリが教えてくれるから、その時間だけポジションを閉じればいいんだ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">いつがお祭りか、自分で調べないとダメ？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">口座のアプリにカレンダーや通知があるから、それ見ておけば大丈夫。その日時は無理に張り付かなくていいよ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">避けられるなら、それで安心する。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <p>雇用統計や政策金利発表など、相場が急に動くタイミングがあります。アメリカの雇用統計は特に注目され、発表の瞬間に大きく値が飛ぶことも。</p>
+          <p>スマホアプリの通知で「いつ発表があるか」を把握し、その時間帯はポジションを持たない、または小さくするだけで、大きな暴落・暴騰を避けられます。お祭りの日は「参加しない」選択も、立派な戦略です。</p>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>経済指標の日時はアプリが教えてくれる。</strong>その時間だけ避ければ、急な暴落・暴騰に巻き込まれにくいんだ。参加しない選択もアリだよ。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">口座を選ぶ</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 夢と現実：複利の魔法 -->
+    <section class="section" id="compound">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">1万円を、1年後に142万円にする挑戦。</h2>
+        <p class="section-lead">毎週1.1倍（週利10%）のシミュレーション。「毎週勝てれば」という誠実な念押し。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">複利って聞いたことあるけど、本当にそんなに増えるの？難しそう…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">雪だるまが転がるように、利子が利子を生む仕組み。週に10%ずつ増えると仮定すると、グラフで見ると一気にカーブが伸びるよ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">1万円が1年で142万って、現実的には無理じゃない？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">毎週10%は「理想」だから、現実はもっとゆるい。でも「小さなプラスを積み重ねる」考え方は本物。一発逆転よりずっと近道だよ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">表を見たらイメージ湧いた。ちょっとずつでいいんだね。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose">
+          <p>アインシュタインが「人類最大の発見」と呼んだのが複利です。</p>
+          <h3>1.1倍の積み重ね（週利10%）</h3>
+          <p>1万円を、毎週たったの1.1倍（10%プラス）にすることを目標にします。最初は「たったの1,000円か」と思うかもしれません。</p>
+          <h3>雪だるま式</h3>
+          <p>1週目の利益を2週目の軍資金に足し、それを繰り返すと……半年後には11.9万円、1年後には<strong>1,420,429円</strong>になります。</p>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>週</th>
+                <th>元金（円）</th>
+                <th>1.1倍後（円）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>10,000</td><td>10,000</td></tr>
+              <tr><td>4</td><td>14,641</td><td>16,105</td></tr>
+              <tr><td>8</td><td>21,435</td><td>23,579</td></tr>
+              <tr><td>12</td><td>31,384</td><td>34,522</td></tr>
+              <tr><td>26</td><td>114,974</td><td>126,471</td></tr>
+              <tr><td>52</td><td>1,291,496</td><td class="cell-highlight">1,420,429</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note"><strong>現実的な念押し：</strong>もちろん、毎週勝ち続けるのは至難の業です。負ける週も必ずあります。でも、「一発逆転」を狙うより「小さなプラスを積み重ねる」方が、はるかにゴールに近いことを知っておいてください。</p>
+        <div class="interactive-widget compound-sim" id="compound-simulator">
+          <h3 class="interactive-widget-title">自分で試せる：複利シミュレーター</h3>
+          <p class="interactive-widget-lead">元金・目標の週利（％）・期間（週）を入れて、期末の資産と週ごとの推移をざっくり確認できます。</p>
+          <form class="compound-form" id="compound-form" action="#" novalidate>
+            <div class="compound-field">
+              <label for="compound-principal">元金（円）</label>
+              <input type="number" id="compound-principal" name="principal" min="1" step="1" value="10000" inputmode="numeric" required>
+            </div>
+            <div class="compound-field">
+              <label for="compound-rate">目標週利（％）</label>
+              <input type="number" id="compound-rate" name="rate" min="0" max="999" step="0.1" value="10" inputmode="decimal" required>
+            </div>
+            <div class="compound-field">
+              <label for="compound-weeks">期間（週）</label>
+              <input type="number" id="compound-weeks" name="weeks" min="1" max="520" step="1" value="52" inputmode="numeric" required>
+            </div>
+            <div class="compound-field compound-field-submit">
+              <button type="submit" class="btn btn-primary" id="compound-calc-btn">計算する</button>
+            </div>
+          </form>
+          <p class="compound-hint">※あくまで計算機です。実際の取引結果や将来のリターンを保証するものではありません。</p>
+          <div id="compound-output" class="compound-output" hidden>
+            <p class="compound-final" aria-live="polite"><span class="compound-final-label">最終金額（概算）</span><strong id="compound-final-yen">—</strong></p>
+            <div class="table-wrap compound-table-wrap">
+              <table class="data-table compound-result-table">
+                <thead>
+                  <tr>
+                    <th>週</th>
+                    <th>資産（円）</th>
+                  </tr>
+                </thead>
+                <tbody id="compound-result-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>利子が利子を生む「複利」</strong>を味方にしよう。毎週10%は理想だけど、小さなプラスを積み重ねる考え方が本物なんだ。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">口座を比較する</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FXのウソ・ホント -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <div class="section-card">
+        <h2 class="section-title section-title-pastel">世界のお金の両替屋さん（FX）の「ウソ・ホント」</h2>
+        <p class="section-lead">よくある不安に、ズバッと答えます。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">借金とか、英語できないとダメとか、聞くたびに不安になる…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">ウソが多いよ。日本の口座なら借金はほぼゼロ、画面も全部日本語。下のQ&amp;Aでひとつずつ潰していこう。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">土日ずっとチャート気にしてたら休めなさそう…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">土日は世界の市場が閉まってるから、値動きゼロ。FXのことは忘れて休んでOK。そこは安心して。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">Q&amp;A読んだら、だいぶ不安消えた。</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-list">
+          <dl class="faq-item">
+            <dt>Q. 借金まみれになる？</dt>
+            <dd><strong>A. ホントはなりません。</strong> 日本の法律で「ロスカット」（お財布が空っぽになる前に強制終了してくれる安全装置）が義務付けられているため、預けたお金以上に損をすることは基本ありません。</dd>
+          </dl>
+          <dl class="faq-item">
+            <dt>Q. 英語ができないとダメ？</dt>
+            <dd><strong>A. ウソです。</strong> 国内の主要FX口座なら、管理画面もニュースもすべて日本語。スマホひとつで完結します。</dd>
+          </dl>
+          <dl class="faq-item">
+            <dt>Q. 土日はチャートが気になって休めない？</dt>
+            <dd><strong>A. ホントに休めます。</strong> 土日は世界中の市場が閉まるので、値動きはゼロ。世界のお金の両替屋さん（FX）のことは忘れて、家族や趣味に100%集中できる健全な投資です。</dd>
+          </dl>
+        </div>
+        <div class="summary-box">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>借金・英語・土日の心配はほぼウソ。</strong>日本の口座ならルールで守られてるし、画面は日本語。Q&amp;Aで不安を潰していこう。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">口座一覧を見る</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 結論：なぜ「環境」が一番大事なのか -->
+    <section class="section section-dark" id="environment">
+      <div class="container">
+        <div class="section-card section-card-dark">
+        <h2 class="section-title section-title-pastel">根性ではなく、インフラで勝つ。</h2>
+        <p class="section-lead">感情に負けないためのVPS、EA、そして信頼できるFX口座（複数社から選べる）。</p>
+        <div class="dialogue">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">感情に負けて暴れそうで怖い…。プロはどうしてるの？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">プロは「環境」で勝つ。ルールを機械に任せたり、信頼できる口座を選んだり。根性じゃなく、仕組みで守るんだ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">自分でルール守れるか不安…。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">だから「逆指値」で<ruby>損切り<rt>そんぎり</rt></ruby>を予約しておく。あとはVPSやEAで機械に任せる選択もある。最初は口座選びとルール決めからでOK。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">仕組みで守る、って考え方なら続けられそう。</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block prose prose-inverse">
+          <p>世界のお金の両替屋さん（FX）で失敗する人の共通点は、<strong>「熱くなってルールを破る」</strong>ことです。</p>
+          <h3>感情は最大の敵</h3>
+          <p>「負けを取り返したい！」「もっと稼ぎたい！」という感情が、無理な取引を生み、ロスカット（お財布が空になる前に強制終了してくれる安全装置）を招きます。</p>
+          <h3>仕組みで勝つ</h3>
+          <p>感情に左右されないために、プロは「環境」を整えます。24時間安定して動くサーバー（VPS）や、ルール通りに動く自動売買ツール（EA）。信頼できるFX口座（下で紹介している複数社から選べます）。これらを使いこなすことが、成功への最短ルートです。</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>FX口座（複数社）</h3>
+            <p>口座開設のしやすさ・スプレッド（両替屋さんに払うほんのちょっとの手数料）・デモの有無・サポートで比較して選べます。下の「おすすめ口座」で国内の主要口座を紹介しています。</p>
+          </div>
+          <div class="feature-card">
+            <h3>VPS（仮想サーバー）</h3>
+            <p>パソコンを24時間つけっぱなしにしなくても、EAを動かせます。ネットが止まっても、VPS上でプログラムが動き続けるので「見張り」から解放されます。</p>
+          </div>
+          <div class="feature-card">
+            <h3>EA（エキスパートアドバイザー）</h3>
+            <p>ルールに従って自動で売買するプログラム。人間の感情を排除し、決めたルールだけを実行します。</p>
+          </div>
+        </div>
+        <div class="summary-box summary-box-dark">
+          <span class="summary-box-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="26" r="16" fill="#FDF6E8" stroke="#D4A574" stroke-width="1"/><ellipse cx="20" cy="25" rx="2" ry="2" fill="#4a5568"/><ellipse cx="28" cy="25" rx="2" ry="2" fill="#4a5568"/><path d="M 20 33 Q 24 35.5 28 33" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <div><p class="summary-box-title">つまり、先生が言いたいのはこれだけ！</p><p><strong>感情より「環境」。</strong>ルールを機械に任せたり、信頼できる口座を選んだり。根性じゃなく、仕組みで守ってね。</p></div>
+        </div>
+        <div class="section-cta">
+          <a href="#brokers" class="btn btn-primary">おすすめ口座を見る</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スキャルピング解説 ＋ FX口座比較（React アプリ） -->
+    <section class="section" id="brokers">
+      <div class="container">
+        <div id="root-brokers"></div>
+        <p class="broker-note" style="margin-top: 2rem;">※口座開設はご自身の判断でお願いします。</p>
+      </div>
+    </section>
+
+    <!-- 10. 第一歩：まずは「デモ」から -->
+    <section class="section cta-section" id="cta">
+      <div class="container">
+        <div class="dialogue" style="margin-bottom: 2rem;">
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">やっぱりお金を入れるのが怖い…。失敗したらどうしよう。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">だからまずは「デモ」。1円も使わずに本番と同じ画面で遊べる。合わなければアプリ消すだけ。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">本当に無料？あとからお金取られたりしない？</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-teacher">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-teacher"/></svg><span class="dialogue-role">先生</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">デモは仮想のお金だから、損しても増えても本物の財布には影響ゼロ。口座開設も無料。入金するかは自分で決められるから、まずは1週間だけ触ってみよう。</p>
+            </div>
+          </div>
+          <div class="dialogue-item dialogue-beginner dialogue-relieved">
+            <div class="dialogue-avatar"><svg class="dialogue-icon" aria-hidden="true"><use href="#icon-beginner"/></svg><span class="dialogue-role">初心者</span></div>
+            <div class="dialogue-bubble">
+              <p class="dialogue-text">それなら安心。1週間だけやってみる。</p>
+            </div>
+          </div>
+        </div>
+        <div class="cta-box">
+          <h2 class="cta-title">リスクゼロで、1週間だけ遊んでみる。</h2>
+          <p class="cta-text">1円も使わずに本番を体験する、一番賢いスタート法。国内のFX口座なら、メールアドレスひとつで本番と同じデモ取引を無料で使えるところがほとんどです。まずは上の「おすすめ口座」から気になる口座を選び、1週間だけゲーム感覚で「上か下か」を予想してポチポチしてみてください。合わなければアプリを消すだけ。1円も失わず、新しい世界を覗いた経験だけが残ります。</p>
+          <a href="#brokers" class="btn btn-primary">おすすめ口座で選ぶ</a>
+          <p class="cta-note">※リンクは準備中です。口座開設はご自身の判断でお願いします。</p>
         </div>
       </div>
     </section>
@@ -69,10 +855,25 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-logo">MomoTool<span class="logo-dot">.</span>net</p>
-      <p class="footer-disclaimer">各コンテンツは情報提供を目的としており、投資・購入の勧誘ではありません。ご利用はご自身の責任でお願いします。</p>
+      <p class="footer-disclaimer">本サイトはFXの入門情報の提供を目的としており、投資の勧誘ではありません。取引はご自身の責任で行ってください。</p>
       <p class="footer-copy">&copy; MomoTool.net</p>
     </div>
   </footer>
+
+  <div id="teacher-feedback" class="teacher-feedback" aria-hidden="true" hidden>
+    <button type="button" class="teacher-feedback-backdrop" aria-label="閉じる"></button>
+    <div class="teacher-feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="teacher-feedback-heading">
+      <button type="button" class="teacher-feedback-close" aria-label="閉じる">&times;</button>
+      <div class="teacher-feedback-inner">
+        <div class="teacher-feedback-icon" aria-hidden="true"><svg class="dialogue-icon"><use href="#icon-teacher"/></svg></div>
+        <div class="teacher-feedback-copy">
+          <p id="teacher-feedback-heading" class="teacher-feedback-heading"></p>
+          <p id="teacher-feedback-body" class="teacher-feedback-body"></p>
+          <button type="button" class="btn btn-primary teacher-feedback-ok" id="teacher-feedback-ok">わかった</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function() {
@@ -89,7 +890,159 @@
           });
         });
       }
+      // Mermaid: レバレッジのフローチャートを描画（defer のため load で実行）
+      function initMermaid() {
+        if (typeof mermaid !== 'undefined') {
+          mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: { primaryColor: '#e8f4f8', primaryTextColor: '#16213a', lineColor: '#5a6578' } });
+          mermaid.run({ querySelector: '.mermaid', nodes: document.querySelectorAll('.mermaid') });
+        }
+      }
+      if (document.readyState === 'complete') initMermaid(); else window.addEventListener('load', initMermaid);
+
+      /* 複利シミュレーター */
+      var compoundForm = document.getElementById('compound-form');
+      var compoundOutput = document.getElementById('compound-output');
+      var compoundFinalYen = document.getElementById('compound-final-yen');
+      var compoundTbody = document.getElementById('compound-result-tbody');
+      if (compoundForm && compoundOutput && compoundFinalYen && compoundTbody) {
+        compoundForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var principal = parseFloat(document.getElementById('compound-principal').value);
+          var rate = parseFloat(document.getElementById('compound-rate').value);
+          var weeks = parseInt(document.getElementById('compound-weeks').value, 10);
+          if (!isFinite(principal) || principal <= 0 || !isFinite(rate) || rate < 0 || !isFinite(weeks) || weeks < 1) return;
+          weeks = Math.min(520, Math.floor(weeks));
+          var factor = 1 + rate / 100;
+          var rows = [];
+          for (var w = 0; w <= weeks; w++) {
+            var balance = principal * Math.pow(factor, w);
+            rows.push({ week: w, balance: balance });
+          }
+          compoundFinalYen.textContent = Math.round(rows[rows.length - 1].balance).toLocaleString('ja-JP') + ' 円';
+          compoundTbody.innerHTML = '';
+          rows.forEach(function(row) {
+            var tr = document.createElement('tr');
+            var tdW = document.createElement('td');
+            tdW.textContent = String(row.week);
+            var tdB = document.createElement('td');
+            tdB.textContent = Math.round(row.balance).toLocaleString('ja-JP');
+            if (row.week === weeks) tdB.classList.add('cell-highlight');
+            tr.appendChild(tdW);
+            tr.appendChild(tdB);
+            compoundTbody.appendChild(tr);
+          });
+          compoundOutput.hidden = false;
+        });
+      }
+
+      /* 買い・売りミニクイズ + 先生ポップアップ */
+      var teacherRoot = document.getElementById('teacher-feedback');
+      var teacherHeading = document.getElementById('teacher-feedback-heading');
+      var teacherBody = document.getElementById('teacher-feedback-body');
+      var teacherOk = document.getElementById('teacher-feedback-ok');
+      var teacherClose = teacherRoot && teacherRoot.querySelector('.teacher-feedback-close');
+      var teacherBackdrop = teacherRoot && teacherRoot.querySelector('.teacher-feedback-backdrop');
+      var afterTeacherClose = null;
+
+      function openTeacher(title, body, onClose) {
+        if (!teacherRoot || !teacherHeading || !teacherBody) return;
+        teacherHeading.textContent = title;
+        teacherBody.textContent = body;
+        afterTeacherClose = typeof onClose === 'function' ? onClose : null;
+        teacherRoot.hidden = false;
+        teacherRoot.classList.add('is-open');
+        teacherRoot.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (teacherOk) teacherOk.focus();
+      }
+
+      function closeTeacher() {
+        if (!teacherRoot) return;
+        teacherRoot.classList.remove('is-open');
+        teacherRoot.setAttribute('aria-hidden', 'true');
+        teacherRoot.hidden = true;
+        document.body.style.overflow = '';
+        var cb = afterTeacherClose;
+        afterTeacherClose = null;
+        if (cb) cb();
+      }
+
+      if (teacherOk) teacherOk.addEventListener('click', closeTeacher);
+      if (teacherClose) teacherClose.addEventListener('click', closeTeacher);
+      if (teacherBackdrop) teacherBackdrop.addEventListener('click', closeTeacher);
+      document.addEventListener('keydown', function(ev) {
+        if (ev.key === 'Escape' && teacherRoot && teacherRoot.classList.contains('is-open')) closeTeacher();
+      });
+
+      var quizQuestions = [
+        {
+          text: '1ドル150円でドルを買いました（ロング）。レートが155円になったら？',
+          correct: 'profit',
+          ok: 'そのとおり！ドルが「高く」なったので、安く買ったドルを高く売れるイメージ＝利益だよ。',
+          ng: 'ロングはドル高がうれしいんだ。155円なら買い値より売れるから、利益のパターンだよ。もう一度イメージしてみてね。'
+        },
+        {
+          text: '1ドル150円でドルを買いました（ロング）。レートが145円になったら？',
+          correct: 'loss',
+          ok: 'バッチリ！ドルが「安く」なったので、高く買ったドルの価値が下がる＝損失だね。',
+          ng: 'ロングはドル安がきついよ。145円なら買ったときより安いから、損失になりやすいんだ。'
+        },
+        {
+          text: '1ドル150円でドルを売りました（ショート）。レートが145円になったら？',
+          correct: 'profit',
+          ok: 'ナイス！ショートは「高く売って、安く買い戻す」と嬉しい。150円で売って145円なら、その差がプラスだよ。',
+          ng: 'ショートは円高（ドル安）を味方にできるんだ。145円なら買い戻しが安くて利益になりやすいよ。'
+        }
+      ];
+
+      var quizIndex = 0;
+      var quizProgress = document.getElementById('quiz-progress');
+      var quizQuestionEl = document.getElementById('quiz-question');
+      var quizActive = document.getElementById('quiz-active');
+      var quizComplete = document.getElementById('quiz-complete');
+      var quizRestart = document.getElementById('quiz-restart');
+      var quizBtnProfit = document.getElementById('quiz-btn-profit');
+      var quizBtnLoss = document.getElementById('quiz-btn-loss');
+
+      function renderQuiz() {
+        if (quizComplete) quizComplete.hidden = true;
+        if (quizActive) quizActive.hidden = false;
+        var q = quizQuestions[quizIndex];
+        if (quizProgress) quizProgress.textContent = '問題 ' + (quizIndex + 1) + ' / ' + quizQuestions.length;
+        if (quizQuestionEl) quizQuestionEl.textContent = q.text;
+      }
+
+      function finishQuiz() {
+        if (quizActive) quizActive.hidden = true;
+        if (quizComplete) quizComplete.hidden = false;
+      }
+
+      function onQuizAnswer(choice) {
+        var q = quizQuestions[quizIndex];
+        var ok = choice === q.correct;
+        openTeacher(ok ? '正解！' : 'おさらいだよ', ok ? q.ok : q.ng, function() {
+          if (quizIndex < quizQuestions.length - 1) {
+            quizIndex++;
+            renderQuiz();
+          } else {
+            finishQuiz();
+          }
+        });
+      }
+
+      if (quizBtnProfit && quizBtnLoss) {
+        quizBtnProfit.addEventListener('click', function() { onQuizAnswer('profit'); });
+        quizBtnLoss.addEventListener('click', function() { onQuizAnswer('loss'); });
+      }
+      if (quizRestart) {
+        quizRestart.addEventListener('click', function() {
+          quizIndex = 0;
+          renderQuiz();
+        });
+      }
+      if (quizQuestionEl && quizQuestions.length) renderQuiz();
     })();
   </script>
+  <script type="module" src="assets/brokers.js"></script>
 </body>
 </html>
